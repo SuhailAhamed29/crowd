@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Amount</title>
+    <style>
+        /* Basic styling for the input and button */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f4f9;
+        }
+        .donate-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .donate-container input {
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .donate-container button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="donate-container">
+        <h2>Enter Your Donation Amount</h2>
+        <input type="email" id="userEmail" placeholder="Your Email" required>
+        <input type="number" id="donationAmount" placeholder="Amount in INR" required>
+        <button onclick="donate()">Donate</button>
+    </div>
+
+    <!-- EmailJS Script -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <script>
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("LhQId5l0mEXP0lQH7"); // Replace with your EmailJS User ID
+        })();
+
+        function donate() {
+            const amount = document.getElementById('donationAmount').value;
+            const email = document.getElementById('userEmail').value;
+
+            if (amount && email) {
+                // Call a function to handle sending invoice (email and WhatsApp)
+                sendInvoice(amount, email);
+            } else {
+                alert('Please enter both a valid email and amount.');
+            }
+        }
+
+        function sendInvoice(amount, email) {
+            // Sending email via EmailJS
+            const params = {
+                amount: amount,
+                user_email: email // User email is now dynamically collected
+            };
+
+            emailjs.send("service_494i95v", "template_o8u2bhe", params) // Replace with your Service ID and Template ID
+                .then(function(response) {
+                    alert(`Invoice for ₹${amount} has been sent to your email!`);
+                    console.log("Success:", response);
+                })
+                .catch(function(error) {
+                    alert("There was an error sending the invoice.");
+                    console.log("Error:", error);
+                });
+        }
+    </script>
+
+</body>
+</html>

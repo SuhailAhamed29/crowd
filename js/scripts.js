@@ -1,60 +1,30 @@
-document.getElementById('loginForm')?.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    // Get values from the form
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    // Validate email and password
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email format check
-    if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        return;
-    }
-
-    if (password.trim() === "") {
-        alert("Please enter a password.");
-        return;
-    }
-
-    // If validation passes, redirect to projects page
-    window.location.href = "projects.html";
-});
+// scripts.js
 
 
-//project page 
 
 const cardsData = {
     song1: {
-      imgSrc: "https://assets.aceternity.com/demos/lana-del-rey.jpeg",
-      title: "Summertime Sadness",
-      description: "Lana Del Rey, an iconic American singer-songwriter..."
+        imgSrc: "https://assets.aceternity.com/demos/lana-del-rey.jpeg",
+        title: "Project 1",
+        description: [
+            "Description of song 1",
+            "Second point of the description",
+            "Third point of the description"
+        ]
     },
     song2: {
-      imgSrc: "https://assets.aceternity.com/demos/babbu-maan.jpeg",
-      title: "Mitran Di Chhatri",
-      description: "Babbu Maan, a legendary Punjabi singer...Babbu Maan, a legendary Punjabi singer...Babbu Maan, a legendary Punjabi singer..."
-    },
-    song3: {
-        imgSrc: "assets/icon.jpg",
-        title: "Summertime Sadness",
-        description: "Lana Del Rey, an iconic American singer-songwriter..."
-      },
-      song4: {
-        imgSrc: "assets/roronoa-zoro-wanted-5120x2880-10911.jpg",
-        title: "Summertime Sadness",
-        description: "Lana Del Rey, an iconic American singer-songwriter..."
-      },
+        imgSrc: "https://assets.aceternity.com/demos/babbu-maan.jpeg",
+        title: "Mitran Di Chhatri",
+        description: [
+            "Babbu Maan, a legendary Punjabi singer",
+            "He is known for his soulful music.",
+            "He has a huge fan base in Punjab and around the world."
+        ]
+    }
+};
 
-      song5: {
-        imgSrc: "assets/roronoa-zoro-wanted-5120x2880-10911.jpg",
-        title: "Summertime Sadness",
-        description: "Lana Del Rey, an iconic American singer-songwriter..."
-      },
-    // Add more card data here
-  };
-  
-  function showPopup(cardId) {
+
+function showPopup(cardId) {
     const card = cardsData[cardId];
     if (card) {
         document.getElementById('popup-image').src = card.imgSrc;
@@ -70,13 +40,11 @@ const cardsData = {
 
         donateButton.addEventListener('click', (event) => {
             event.stopPropagation();
-            // Store card details in localStorage
             localStorage.setItem('selectedCard', JSON.stringify({
                 title: card.title,
                 description: card.description
             }));
-            // Redirect to payment page
-            window.open("payment.html", "_blank");
+            window.location.href = "payment.html";
         });
 
         const popupOverlay = document.getElementById('popup');
@@ -88,14 +56,11 @@ const cardsData = {
     }
 }
 
-
-
 function closePopup() {
     const popupOverlay = document.getElementById('popup');
     popupOverlay.classList.remove('fade-in');
     popupOverlay.classList.add('fade-out');
 
-    // Delay hiding the popup until after the fade-out animation completes
     popupOverlay.addEventListener('animationend', () => {
         if (popupOverlay.classList.contains('fade-out')) {
             popupOverlay.style.display = 'none';
@@ -103,14 +68,3 @@ function closePopup() {
         }
     }, { once: true });
 }
-
-
-  
- 
-  
-
-
-
-
-
- 

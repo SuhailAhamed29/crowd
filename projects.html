@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
       <div class="centered-content">
         <h2>Projects</h2>
     </div>
@@ -15,13 +16,13 @@
     <!-- First 3 Cards -->
     <div class="card" onclick="showPopup('song1')">
       <img src="https://assets.aceternity.com/demos/lana-del-rey.jpeg" alt="Summertime Sadness">
-      <h3>Summertime Sadness</h3>
+      <h3>project 1</h3>
       <p>Lana Del Rey</p>
     </div>
     
     <div class="card" onclick="showPopup('song2')">
       <img src="https://assets.aceternity.com/demos/babbu-maan.jpeg" alt="Mitran Di Chhatri">
-      <h3>Mitran Di Chhatri</h3>
+      <h3>project 2</h3>
       <p>Babbu Maan</p>
     </div>
 
@@ -32,7 +33,7 @@
     </div>
     
     <!-- New Cards Below -->
-    <div class="card" onclick="showPopup('song4')">
+    <!-- <div class="card" onclick="showPopup('song4')">
       <img src="https://assets.aceternity.com/demos/lana-del-rey.jpeg" alt="Born to Die">
       <h3>Born to Die</h3>
       <p>Lana Del Rey</p>
@@ -90,18 +91,20 @@
         <img src="https://assets.aceternity.com/demos/babbu-maan.jpeg" alt="Jatt Zimidar">
         <h3>Jatt Zimidar</h3>
         <p>Babbu Maan</p>
-    </div>
+    </div> -->
 
   </div>
 
   <!-- Popup -->
   <div id="popup" class="popup-overlay">
     <div class="popup-content">
-        <img id="popup-image" src="" alt="Song Image">
-        <h3 id="popup-title">Song Title</h3>
-        <p id="popup-description">Song Description</p>
+        <img id="popup-image" src="" alt="Project Image">
+        <h3 id="popup-title"></h3>
+        <ul id="popup-description"></ul> <!-- Unordered list for bullet points -->
+        <button class="close-btn" onclick="closePopup()">×</button>
     </div>
 </div>
+
 
 
   <script src="js/scripts.js"></script>

@@ -3,34 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .card-details {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        form button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        .qr-code-container {
+            margin-top: 20px;
+        }
+
+        .qr-code-container img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            border: 2px solid #007bff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .qr-code-container img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 123, 255, 0.5);
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
     <title>Payment</title>
 </head>
 <body>
-
-
+    
     <div class="container">
-        <h1 class="fade-in">Donate</h1>
-        <div id="selected-card-details" class="card-details"></div>
-        <form id="paymentForm" class="form-slide-in">
-            <input type="text" placeholder="Name" required>
+        <h1>Donate</h1>
+        <div id="selected-card-details" class="card-details">
+            <!-- Placeholder for dynamically loaded card details -->
+        </div>
+        <form id="paymentForm">
+            <input type="text" placeholder="Your Name" required>
             <input type="tel" placeholder="Phone Number" required>
-            <input type="email" placeholder="Email" required>
+            <input type="email" placeholder="Email Address" required>
+            <button type="submit">Proceed to Pay</button>
         </form>
-        <h2 class="fade-in">Scan to Pay</h2>
-        <img src="assets/roronoa-zoro-wanted-5120x2880-10911.jpg" alt="QR Code" class="qr-zoom">
+
+        <div class="qr-code-container">
+            <h2>Scan to Pay</h2>
+            <img src="assets/roronoa-zoro-wanted-5120x2880-10911.jpg" alt="QR Code">
+        </div>
+
+        <div class="footer">
+            <p>Need help? <a href="#">Contact Support</a></p>
+        </div>
     </div>
 
-
-
-
-    
-   <script>
+    <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Retrieve card details from localStorage
             const cardData = JSON.parse(localStorage.getItem('selectedCard'));
             const cardDetailsDiv = document.getElementById('selected-card-details');
-            
+
             if (cardData) {
                 // Display card details dynamically
                 cardDetailsDiv.innerHTML = `
@@ -39,17 +150,19 @@
                     <p><strong>Description:</strong> ${cardData.description}</p>
                 `;
             }
-
-            const qrCode = document.querySelector(".qr-zoom");
-
-            qrCode.addEventListener("mouseenter", () => {
-                qrCode.style.boxShadow = "0 10px 25px rgba(0, 255, 0, 0.5)";
-            });
-
-            qrCode.addEventListener("mouseleave", () => {
-                qrCode.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.5)";
-            });
         });
+
+        <!-- In your payment.html, change the QR Code to dynamically generate a QR -->
+
+    // Assuming you have cardData object like before
+    const cardData = JSON.parse(localStorage.getItem('selectedCard'));
+    if (cardData) {
+        // Construct the URL with query parameters, e.g., project ID or details
+        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=http://yourdomain.com/donate_amount.html?project=${cardData.title}`;
+        document.querySelector(".qr-code-container img").src = qrUrl; // Update QR source dynamically
+    }
+
+
     </script>
 </body>
 </html>

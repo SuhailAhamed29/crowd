@@ -3,115 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Crowd Fundraiser</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #f9f9f9;
-        }
-
-        .header {
-            background-color: #0284c7;
-            color: #fff;
-            padding: 30px 20px;
-            text-align: center;
-            animation: fadeInDown 1.5s ease-out;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 1px;
-        }
-
-        .container {
-            width: 15cm;
-            margin: 0 auto;
-            margin-top: 8%;
-            padding: 20px 0;
-            text-align: center;
-            animation: fadeInUp 1.5s ease-out;
-        }
-
-        .container p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .start-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 30px;
-            background: linear-gradient(90deg, #0284c7, #0369a1);
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .start-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes fadeInDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .container p {
-                font-size: 1rem;
-            }
-
-            .start-button {
-                font-size: 1rem;
-                padding: 12px 25px;
-            }
-        }
-    </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Welcome to Crowd Fundraiser</h1>
-    </div>
-    <div class="container">
+    <header class="navbar">
+        <!-- <div class="logo">Crowd Fundraiser</div> -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <!-- <li><a href="#">Projects</a></li> -->
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Make a Difference Today</h1>
+            <p>
+                Join us in transforming lives. Start or support fundraisers for personal, social, or charitable causes. Together, we can make an impact.
+            </p>
+            <a href="projects.html" class="cta-button">Start a Fundraiser</a>
+        </div>
+    </section>
+    
+    <section class="about">
+        <h2>Why Choose Crowd Fundraiser?</h2>
         <p>
-            Join us in making a difference. Crowd Fundraiser is a platform where individuals can raise funds for personal, social, or charitable causes. Whether you're supporting a community initiative, helping someone in need, or turning your ideas into reality, we are here to help.
+            Crowd Fundraiser empowers individuals and communities to gather support for meaningful causes. We make fundraising simple, transparent, and impactful.
         </p>
-        <p>
-            <b>Share your story, gather support, and create an impact.</b>
-        </p>
-        <a href="projects.html" class="start-button">Start a Fundraiser</a>
-    </div>
-    <script src="js/scripts.js"></script>
+        <div class="features">
+            <div class="feature-box">
+                <h3>Secure</h3>
+                <p>Ensure secure and transparent transactions.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Global Reach</h3>
+                <p>Gather support from people worldwide.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Easy to Use</h3>
+                <p>Set up your fundraiser in just a few steps.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Crowd Fundraiser. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>

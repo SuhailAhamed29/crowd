@@ -63,7 +63,7 @@ body, h1, h2, p, ul, li, a {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('https://www.techmagic.co/blog/content/images/2022/04/cover-Crowdfunding.png') no-repeat center center/cover;
+    background: url('https://d2aq6dqxahe4ka.cloudfront.net/themes/front/images/Education-Mobile.jpg') no-repeat center center/cover;
     color: #fff;
     text-align: center;
     padding: 20px;
@@ -93,6 +93,7 @@ body, h1, h2, p, ul, li, a {
 
 .hero-content p {
     font-size: 1rem;
+    margin-top: 35%;
     margin-bottom: 30px;
 }
 

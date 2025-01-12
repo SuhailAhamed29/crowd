@@ -3,7 +3,13 @@ body, h1, h2, p, ul, li, a {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: Inter, "Helvetica Neue", "San Francisco", sans-serif;
+}
+
+/* Background and Text Colors */
+body {
+    background-color: #000; /* Black background */
+    color: #fff;           /* White text */
 }
 
 /* Navbar */
@@ -12,11 +18,12 @@ body, h1, h2, p, ul, li, a {
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #000;
     color: #fff;
-    position: fixed;
-    width: 100%;
+    position: sticky;
+    top: 0;
     z-index: 1000;
+    border-bottom: 1px solid #333;
 }
 
 .navbar .logo {
@@ -27,11 +34,11 @@ body, h1, h2, p, ul, li, a {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px;
 }
 
 .nav-links li a {
-    text-decoration:none;
+    text-decoration: none;
     color: #fff;
     font-size: 1rem;
     transition: color 0.3s;
@@ -41,86 +48,62 @@ body, h1, h2, p, ul, li, a {
     color: #ffcc00;
 }
 
-.donate-button {
-    padding: 10px 20px;
-    background-color: #ffcc00;
-    color: #000;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 20px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.donate-button:hover {
-    background-color: #ff9900;
-}
-
 /* Hero Section */
 .hero {
-    height: 100vh;
+    height: 80vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url('https://d2aq6dqxahe4ka.cloudfront.net/themes/front/images/Education-Mobile.jpg') no-repeat center center/cover;
-    color: #fff;
     text-align: center;
+    color: #fff;
     padding: 20px;
-    position: relative;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1;
-}
-
-.hero-content {
-    z-index: 2;
-    max-width: 600px;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
 .hero-content p {
-    font-size: 1rem;
-    margin-top: 35%;
+    font-size: 1.1rem;
     margin-bottom: 30px;
 }
 
 .cta-button {
     padding: 15px 30px;
-    background: #ffcc00;
+    background: rgb(162, 5, 52);
     color: #000;
     font-size: 1.2rem;
     font-weight: bold;
     text-decoration: none;
     border-radius: 30px;
-    transition: transform 0.3s, background-color 0.3s;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
 }
 
 .cta-button:hover {
-    transform: translateY(-5px);
-    background-color: #ff9900;
+    background-color:rgb(227, 0, 68);
+    color: #fff;
+    transform: scale(1.09);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4);
 }
+
+.cta-button:active {
+    transform: scale(0.95); /* Simulate press-down effect */
+    box-shadow: 0 5px 10px rgba(0, 128, 255, 0.2); /* Adjust shadow to look pressed */
+    background-color: #3c3c3c; /* Darker blue to indicate a click */
+}
+
+
 
 /* About Section */
 .about {
     padding: 50px 20px;
-    width: 50%; /* Adjust the width to control how wide it gets */
-    margin: 0 auto; /* Center the section horizontally */
+    max-width: 900px;
+    margin: 0 auto;
     text-align: center;
-    background-color: #f9f9f9;
-    color: #333;
 }
 
 .about h2 {
@@ -129,59 +112,50 @@ body, h1, h2, p, ul, li, a {
 }
 
 .about p {
-    font-size: 1rem;
-    margin-bottom: 40px;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #ccc;
 }
 
 .features {
     display: flex;
     justify-content: space-around;
+    gap: 20px;
     margin-top: 30px;
-    gap: 10px;
 }
 
 .feature-box {
-    width: 20%;
-    height: 15%;
+    width: 30%;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #111;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-box h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 10px;
+    color: rgb(162, 5, 52);
 }
 
 .feature-box p {
     font-size: 1rem;
-    color: #555;
+    color: #ccc;
 }
 
 .feature-box:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    background-color: #3f3f3f; /* Change background color on hover */
-    color: white; /* Change text color on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
 }
-
-.feature-box:hover h3 {
-    color: #ffcc00; /* Highlight the heading on hover */
-}
-
-.feature-box:hover p {
-    color: #ffcc00; /* Highlight the paragraph on hover */
-}
-
 
 /* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
+    background: #000;
     color: #fff;
     font-size: 0.9rem;
+    margin-top: 50px;
 }

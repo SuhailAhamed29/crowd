@@ -38,6 +38,7 @@ body {
   }
   #amount {
     font-size: 16px;
+    margin-top:5%;
     font-weight: bold;
   }
   .btn-donate {

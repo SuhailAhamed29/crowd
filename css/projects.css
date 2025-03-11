@@ -1,3 +1,4 @@
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,11 +12,11 @@ body {
     flex-direction: column; /* Aligns the text and cards vertically */
 }
 
+/* Centered heading */
 .centered-content h2 {
     margin: 0;
     padding: 20px 0;
 }
-
 
 h2 {
     color: wheat;
@@ -23,16 +24,16 @@ h2 {
     font-size: 2em;
 }
 
-
-
+/* Main container */
 .container {
     text-align: center;
-    background: #f4f4f4; /* Softer background color */
+    background: #f4f4f4;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Card layout */
 .card-container {
     display: flex;
     margin-top: 5%;
@@ -46,34 +47,23 @@ h2 {
 
 .card {
     position: relative;
-    width: 25%; /* 3 cards per row */
+    width: 25%;
     padding: 15px;
-    background: #f4f4f4; /* Softer background color */
+    background: #f4f4f4;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    height: 350px; /* Adjust based on content */
+    height: 350px;
     overflow: hidden;
 }
-
-
-@media (max-width: 768px) {
-    .card {
-        width: 100%; /* One card per row on small screens */
-    }
-
-    .card-container {
-        width: 100%; /* Ensure container width adapts */
-    }
-}
-
 
 .card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Card content */
 .card img {
     width: 100%;
     height: 220px;
@@ -92,17 +82,18 @@ h2 {
     color: #666;
 }
 
-/* Add animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* Full width on small screens */
+    }
+
+    .card-container {
+        width: 100%;
+    }
 }
 
-@keyframes fadeOut {
-    from { opacity: 1; transform: scale(1); }
-    to { opacity: 0; transform: scale(0.9); }
-}
-
+/* Popup Overlay */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -114,76 +105,119 @@ h2 {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    padding: 20px;
 }
 
-/* Show overlay with fade-in animation */
-.popup-overlay.fade-in .popup-content {
-    animation: fadeIn 0.3s ease forwards;
-}
-
-/* Fade-out animation for closing */
-.popup-overlay.fade-out .popup-content {
-    animation: fadeOut 0.3s ease forwards;
-}
-
+/* Popup Content */
 .popup-content {
     position: relative;
     background: white;
     padding: 20px;
-    border-radius: 10px;
-    max-width: 500px;
+    border-radius: 12px;
+    max-width: 450px;
+    width: 100%;
     text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Popup Image */
 .popup-content img {
-    width: 400px;
-    height: 400px; /* Set a fixed height for uniformity */
-    object-fit: contain; /* Ensures the aspect ratio is preserved */
-    border-radius: 8px;
-    background-color: #f5f5f5; /* Optional: Adds a background in case the image doesn't fill the space */
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
+/* Popup Title */
 .popup-content h3 {
     margin: 10px 0;
-    color: #000000;
-}
-
-.popup-content p {
-    color: #000000;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    border: none;
+    color: #000;
     font-size: 1.5em;
-    cursor: pointer;
 }
 
+/* Popup Bullet Points */
+#popup-description ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+    margin: 10px 0;
+}
 
+#popup-description ul li {
+    font-weight: bold;
+    color: black;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
 
+/* Donate Button */
 .donate-button {
-    background-color: #ff6347;  /* Tomato color for the button */
+    background-color: #ff6347;
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
+    font-size: 1em;
+    margin-top: 15px;
     transition: background-color 0.3s ease;
 }
 
 .donate-button:hover {
-    background-color: #ff4500;  /* Darker shade on hover */
+    background-color: #ff4500;
 }
 
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    font-size: 1.3em;
+    cursor: pointer;
+    color: black;
+}
+
+/* Image Styling */
 img {
     color: #000;
-    width: 100px;  /* Adjust the width */
-    height: 150px; /* Keep the height the same to maintain square shape */
-    object-fit: cover; /* Ensure the image maintains the aspect ratio and covers the area */
-    border-radius: 10px; /* Optional: Add a rounded border */
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Popup Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.9); }
+}
+
+.popup-overlay.fade-in .popup-content {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.popup-overlay.fade-out .popup-content {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+/* Responsive Popup */
+@media (max-width: 500px) {
+    .popup-content {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .popup-content img {
+        max-width: 100%;
+    }
 }

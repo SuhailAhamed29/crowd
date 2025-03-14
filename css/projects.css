@@ -29,6 +29,7 @@ h2 {
     text-align: center;
     background: #f4f4f4;
     padding: 20px;
+    
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -37,11 +38,11 @@ h2 {
 .card-container {
     display: flex;
     margin-top: 5%;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px;
-    width: 70%; /* Adjusted for better layout */
+    width: 60%; /* Adjusted for better layout */
     box-sizing: border-box;
 }
 
@@ -118,17 +119,33 @@ h2 {
     padding: 20px;
 }
 
-/* Popup Content */
+/* Popup Content - Scrollable for small devices */
 .popup-content {
+    width: 400px;
+    height: 500px;
+    overflow-y: auto;
     position: relative;
     background: white;
     padding: 20px;
     border-radius: 12px;
-    max-width: 420px; /* Adjusted max width */
-    width: 100%; /* Full width within max */
     text-align: center;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
+
+/* Optional: Hide scrollbar for better aesthetics (Mobile) */
+.popup-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.popup-content::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+}
+
 
 /* Popup Image */
 .popup-content img {
@@ -147,21 +164,22 @@ h2 {
     font-size: 1.4em;
 }
 
-/* Popup Bullet Points */
 #popup-description ul {
     list-style-type: disc;
-    padding-left: 20px;
-    text-align: left;
-    margin: 10px 0;
+    padding-left: 0; /* Remove extra padding */
+    margin: 10px auto; /* Auto margin for center alignment */
+    display: table; /* Treat it like a table to shrink to content */
 }
 
 #popup-description ul li {
+    text-align: left; /* Keep each list item left-aligned internally */
     font-weight: bold;
     color: black;
     margin-bottom: 8px;
     font-size: 0.95em;
     line-height: 1.5;
 }
+
 
 /* Donate Button */
 .donate-button {

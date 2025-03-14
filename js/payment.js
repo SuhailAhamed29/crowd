@@ -6,10 +6,7 @@ function donate() {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const message = document.getElementById('message').value || "No message provided.";
-  const amount = document.getElementById('slider').value;  // Get value from number input
-
-  // Update the amount display
-  document.getElementById('amount').textContent = "Amount: ₹" + amount;
+  const amount = document.getElementById('slider').value;  // Get value from slider input
 
   if (name && email && amount > 0) {
     // Send the email using EmailJS
@@ -34,3 +31,15 @@ function donate() {
     alert("Please fill all required fields and select a valid donation amount.");
   }
 }
+
+// ✅ Real-time update of donation amount when slider value changes
+const slider = document.getElementById('slider');
+const amountDisplay = document.getElementById('amount');
+
+// Set initial amount display on page load
+amountDisplay.textContent = "Amount: ₹" + slider.value;
+
+// Add event listener to update amount in real-time
+slider.addEventListener('input', function() {
+  amountDisplay.textContent = "Amount: ₹" + slider.value;
+});

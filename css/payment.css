@@ -1,55 +1,181 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f7f9fc, #e6ecf4);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-  }
-  .container {
+    padding: 20px;
+}
+
+.container {
     background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    max-width: 420px;
     width: 100%;
-    max-width: 400px;
-  }
-  h2 {
+    box-sizing: border-box;
     text-align: center;
-  }
-  label {
+}
+
+/* Header */
+h2 {
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #555;
     font-size: 14px;
-    display: block;
-    margin: 10px 0 5px;
-  }
-  input[type="text"], input[type="email"], input[type="tel"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  .slider-container {
-    margin-bottom: 20px;
-  }
-  #slider {
-    width: 100%;
-  }
-  #amount {
-    font-size: 16px;
-    margin-top:5%;
-    font-weight: bold;
-  }
-  .btn-donate {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
+}
+
+/* Quick amount buttons */
+.amount-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.amount-options button {
+    background: #f0f0f0;
     border: none;
-    border-radius: 5px;
+    padding: 10px 16px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 500;
+}
+
+.amount-options button:hover {
+    background: #ddd;
+}
+
+/* Input */
+input {
     width: 100%;
-  }
-  .btn-donate:hover {
-    background-color: #218838;
-  }
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+/* QR Code */
+.qr-image {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin: 16px auto 12px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    padding: 6px;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+/* Payment icons */
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.payment-icons img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    opacity: 0.85;
+    transition: transform 0.2s, opacity 0.2s;
+    cursor: pointer;
+}
+
+.payment-icons img:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Button */
+.btn-donate {
+    background: linear-gradient(135deg, #1a73e8, #1669c1);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.btn-donate:hover {
+    background: linear-gradient(135deg, #145aba, #114a94);
+    transform: translateY(-2px);
+}
+
+.btn-donate:active {
+    transform: scale(0.98);
+}
+
+/* Footer secure badge */
+.secure-badge {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #777;
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+    .container {
+        padding: 20px;
+    }
+
+    .qr-image {
+        width: 130px;
+        height: 130px;
+    }
+
+    .payment-icons img {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+
+/* Top Navbar */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.home-link {
+  text-decoration: none;
+  color: #1a73e8;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.home-link:hover {
+  color: #145aba;
+}

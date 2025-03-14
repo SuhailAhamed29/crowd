@@ -8,8 +8,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #000000;
-    flex-direction: column; /* Aligns the text and cards vertically */
+    background: #f2f2f2; /* Light gray background */
+    flex-direction: column;
 }
 
 /* Centered heading */
@@ -19,7 +19,7 @@ body {
 }
 
 h2 {
-    color: wheat;
+    color: #333; /* Soft dark gray */
     margin-top: 100%;
     font-size: 2em;
 }
@@ -27,41 +27,40 @@ h2 {
 /* Main container */
 .container {
     text-align: center;
-    background: #f4f4f4;
+    background: #ffffff; /* White */
     padding: 20px;
-    
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* Card layout */
 .card-container {
     display: flex;
     margin-top: 5%;
-    gap: 10px;
+    gap: 16px;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px;
-    width: 60%; /* Adjusted for better layout */
+    width: 70%;
     box-sizing: border-box;
 }
 
 .card {
     position: relative;
-    width: 28%; /* Adjusted for better card fit */
+    width: 28%;
     padding: 15px;
-    background: #f4f4f4;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    height: 340px; /* Slightly reduced height */
+    height: 340px;
     overflow: hidden;
 }
 
 .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 86, 105, 0.26);
 }
 
 /* Card content */
@@ -69,13 +68,13 @@ h2 {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 .card h3 {
     margin-top: 10px;
     font-size: 1.1em;
-    color: #333;
+    color: #444;
 }
 
 .card p {
@@ -86,7 +85,7 @@ h2 {
 /* Responsive adjustments */
 @media (max-width: 1024px) {
     .card {
-        width: 45%; /* 2 cards in a row */
+        width: 45%;
     }
 
     .card-container {
@@ -96,7 +95,7 @@ h2 {
 
 @media (max-width: 600px) {
     .card {
-        width: 100%; /* Full width on small screens */
+        width: 100%;
     }
 
     .card-container {
@@ -111,7 +110,7 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     display: none;
     justify-content: center;
     align-items: center;
@@ -119,33 +118,32 @@ h2 {
     padding: 20px;
 }
 
-/* Popup Content - Scrollable for small devices */
+/* Popup Content */
 .popup-content {
     width: 400px;
-    height: 500px;
+    max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    background: white;
+    background: #fff;
     padding: 20px;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* Optional: Hide scrollbar for better aesthetics (Mobile) */
+/* Optional scrollbar styling */
 .popup-content::-webkit-scrollbar {
     width: 6px;
 }
 
 .popup-content::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 
 .popup-content::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.05);
 }
-
 
 /* Popup Image */
 .popup-content img {
@@ -160,25 +158,29 @@ h2 {
 /* Popup Title */
 .popup-content h3 {
     margin: 10px 0;
-    color: #000;
+    color: #333;
     font-size: 1.4em;
 }
 
 #popup-description ul {
     list-style-type: disc;
-    padding-left: 0; /* Remove extra padding */
-    margin: 10px auto; /* Auto margin for center alignment */
-    display: table; /* Treat it like a table to shrink to content */
+    list-style-position: inside; /* Bullets inside */
+    padding-left: 0; /* Remove default padding */
+    margin: 10px 0; /* Normal top-bottom margin */
+    width: 100%; /* Full width to fill popup */
+    text-align: left; /* Text aligned left */
 }
 
 #popup-description ul li {
-    text-align: left; /* Keep each list item left-aligned internally */
+    margin-bottom: 8px;
     font-weight: bold;
     color: black;
-    margin-bottom: 8px;
     font-size: 0.95em;
     line-height: 1.5;
+    padding-left: 5px; /* Optional: small indent for aesthetics */
 }
+
+
 
 
 /* Donate Button */
@@ -207,7 +209,7 @@ h2 {
     border: none;
     font-size: 1.3em;
     cursor: pointer;
-    color: black;
+    color: #666;
 }
 
 /* Popup Animations */
@@ -232,7 +234,7 @@ h2 {
 /* Responsive Popup */
 @media (max-width: 500px) {
     .popup-content {
-        max-width: 95%; /* Full width on smaller devices */
+        max-width: 95%;
         padding: 15px;
     }
 
@@ -241,7 +243,6 @@ h2 {
     }
 }
 
-/* Small adjustments for mid-range devices */
 @media (max-width: 768px) and (min-width: 501px) {
     .popup-content {
         max-width: 80%;

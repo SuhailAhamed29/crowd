@@ -248,3 +248,31 @@ h2 {
         max-width: 80%;
     }
 }
+
+
+/* Top Navbar */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 24px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .home-link {
+    text-decoration: none;
+    color: #1a73e8;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.2s;
+  }
+  
+  .home-link:hover {
+    color: #145aba;
+  }

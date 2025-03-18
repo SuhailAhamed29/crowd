@@ -6,56 +6,50 @@
   <link rel="stylesheet" href="css/payment.css">
   <title>Payment Donation Page</title>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/email.min.js"></script>
- 
 </head>
 <body>
-
 
   <nav class="navbar">
     <a href="index.html" class="home-link">← Home</a>
   </nav>
 
-  
-  
   <div class="container">
     <h2>Support Us ❤️</h2>
     <p>Choose an amount or enter a custom one</p>
-  
+
+    <!-- User Information Fields -->
+    <input type="text" id="userName" placeholder="Enter your name" required />
+    <input type="email" id="userEmail" placeholder="Enter your email" required />
+    <input type="tel" id="userPhone" placeholder="Enter your phone number" required />
+
     <div class="amount-options">
       <button onclick="setAmount(50)">₹50</button>
       <button onclick="setAmount(100)">₹100</button>
       <button onclick="setAmount(500)">₹500</button>
     </div>
-  
-    <input type="number" id="customAmount" placeholder="Enter custom amount" />
-  
+
+    <input type="number" id="customAmount" placeholder="Enter custom amount" required />
+
     <img src="./assets/qr.png" alt="QR Code" class="qr-image">
-  
+
     <div class="payment-icons">
       <img src="./assets/g.jpeg" alt="Google Pay">
       <img src="./assets/phone.png" alt="PhonePe">
       <img src="./assets/pay.png" alt="Paytm">
     </div>
-  
+
     <button class="btn-donate">Donate Now</button>
-  
+
     <div class="secure-badge">🔒 100% Secure Payment</div>
   </div>
-  
+
   <script>
     function setAmount(value) {
       document.getElementById('customAmount').value = value;
     }
   </script>
-  
-  
 
-  
-
-
-
-
- <script src="js/payment.js"></script>
+  <script src="js/payment.js"></script>
 
 </body>
 </html>

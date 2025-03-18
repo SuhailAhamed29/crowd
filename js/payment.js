@@ -1,45 +1,50 @@
-// Initialize EmailJS
-emailjs.init('LhQId5l0mEXP0lQH7'); // Replace with your EmailJS Public Key
+document.addEventListener("DOMContentLoaded", function () {
+  emailjs.init("LhQId5l0mEXP0lQH7"); // Replace with your actual EmailJS User ID
 
-// Function to handle the donation process
-function donate() {
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value || "No message provided.";
-  const amount = document.getElementById('slider').value;  // Get value from slider input
+  document.querySelector(".btn-donate").addEventListener("click", function () {
+      const name = document.getElementById("userName").value.trim();
+      const email = document.getElementById("userEmail").value.trim();
+      const phone = document.getElementById("userPhone").value.trim();
+      const amount = document.getElementById("customAmount").value.trim();
 
-  if (name && email && amount > 0) {
-    // Send the email using EmailJS
-    const templateParams = {
-      from_email: "suhailahamedd27@gmail.com",  // Your email
-      to_email: email,                         // User's email entered in the form
-      subject: `Donation Confirmation from ${name}`,  // Subject with the user's name
-      name: name,                               // The user's name
-      message: message,                         // The user's message
-      amount: amount,                           // The donation amount
-    };    
+      // Validate input fields
+      if (!name || !email || !phone || !amount) {
+          alert("Please fill all fields before proceeding.");
+          return;
+      }
 
-    emailjs.send('service_494i95v', 'template_o8u2bhe', templateParams)
-      .then(function(response) {
-        alert(`Thank you, ${name}! We have received your donation of ₹${amount}. A confirmation email has been sent to ${email}.`);
-        console.log("SUCCESS", response.status, response.text);
-      }, function(error) {
-        alert("Failed to send the email. Please try again.");
-        console.log("FAILED", error);
-      });
-  } else {
-    alert("Please fill all required fields and select a valid donation amount.");
-  }
-}
+      // Get selected project from localStorage
+      let selectedProjectData = localStorage.getItem("selectedProject");
+      let projectTitle = "General Donation";
+      let projectDescription = "Thank you for your kind donation.";
 
-// ✅ Real-time update of donation amount when slider value changes
-const slider = document.getElementById('slider');
-const amountDisplay = document.getElementById('amount');
+      if (selectedProjectData) {
+          selectedProjectData = JSON.parse(selectedProjectData);
+          projectTitle = selectedProjectData.title;
+          projectDescription = selectedProjectData.description.replace(/\n/g, "<br>"); // Convert newlines to HTML
+      }
 
-// Set initial amount display on page load
-amountDisplay.textContent = "Amount: ₹" + slider.value;
+      // Prepare email content
+      var emailParams = {
+          to_email: email, 
+          from_email: "suhailahamedd27@gmail.com", 
+          name: name,
+          amount: `₹${amount}`,  // Format with ₹
+          project_title: `<strong>${projectTitle}</strong>`, // Bold project title
+          project_description: projectDescription, // Description as HTML
+          reply_to: email 
+      };
 
-// Add event listener to update amount in real-time
-slider.addEventListener('input', function() {
-  amountDisplay.textContent = "Amount: ₹" + slider.value;
+      console.log("Sending email with:", emailParams); // Debugging
+
+      // Send email using EmailJS
+      emailjs.send("service_494i95v", "template_o8u2bhe", emailParams)
+          .then(function (response) {
+              alert("Thank you! A confirmation email has been sent.");
+          })
+          .catch(function (error) {
+              console.error("Error sending email:", error);
+              alert("Error sending email. Please try again.");
+          });
+  });
 });

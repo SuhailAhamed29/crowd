@@ -64,14 +64,18 @@ function showPopup(cardId) {
         popupDescription.appendChild(donateButton); // Append button to popup
 
         // Handle "Donate" button click to move to payment/participation page
-        donateButton.addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent popup from closing
-            localStorage.setItem('selectedCard', JSON.stringify({
-                title: card.title,
-                description: card.description
-            }));
-            window.location.href = "payment.html"; // Redirect to payment/support page
-        });
+      // Handle "Donate" button click to move to payment/participation page
+
+donateButton.addEventListener('click', (event) => {
+    event.stopPropagation(); // Prevent popup from closing
+    localStorage.setItem('selectedProject', JSON.stringify({
+        title: card.title,
+        description: card.description.join("\n") // Store full description
+    }));
+    window.location.href = "payment.html"; // Redirect to payment page
+});
+
+
 
         // Show popup with fade-in animation
         const popupOverlay = document.getElementById('popup');

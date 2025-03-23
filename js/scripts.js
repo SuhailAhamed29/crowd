@@ -92,32 +92,34 @@ function showPopup(cardId) {
         });
 
         // Check if the logged-in user is khalid@gmail.com
-        const loggedInEmail = localStorage.getItem('userEmail');
-        if (loggedInEmail === 'khalid@gmail.com') {
-            // Add "Delete" button for admin
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = "Delete Project";
-            deleteButton.classList.add('delete-button');
-            deleteButton.style.backgroundColor = '#dc3545';
-            deleteButton.style.marginTop = '10px';
-            
-            deleteButton.addEventListener('click', (event) => {
-                event.stopPropagation(); // Prevent popup from closing
-                if (confirm('Are you sure you want to delete this project?')) {
-                    if (cardId.startsWith('user')) {
-                        // Delete user-created fundraiser
-                        const userFundraisers = JSON.parse(localStorage.getItem("userFundraisers")) || [];
-                        const index = parseInt(cardId.replace('user', ''));
-                        userFundraisers.splice(index, 1);
-                        localStorage.setItem("userFundraisers", JSON.stringify(userFundraisers));
-                    }
-                    closePopup();
-                    location.reload(); // Refresh the page to update the display
-                }
-            });
-            
-            popupDescription.appendChild(deleteButton);
+const loggedInEmail = localStorage.getItem('userEmail');
+
+if (loggedInEmail === 'khalid@gmail.com') {
+    // Add "Delete" button for admin only
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = "Delete Project";
+    deleteButton.classList.add('delete-button');
+    deleteButton.style.backgroundColor = '#dc3545';
+    deleteButton.style.marginTop = '10px';
+
+    deleteButton.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent popup from closing
+        if (confirm('Are you sure you want to delete this project?')) {
+            if (cardId.startsWith('user')) {
+                // Delete user-created fundraiser
+                const userFundraisers = JSON.parse(localStorage.getItem("userFundraisers")) || [];
+                const index = parseInt(cardId.replace('user', ''));
+                userFundraisers.splice(index, 1);
+                localStorage.setItem("userFundraisers", JSON.stringify(userFundraisers));
+            }
+            closePopup();
+            location.reload(); // Refresh the page to update the display
         }
+    });
+
+    popupDescription.appendChild(deleteButton);
+}
+
 
         // Show popup with fade-in animation
         const popupOverlay = document.getElementById('popup');

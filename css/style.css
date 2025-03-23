@@ -24,6 +24,8 @@ html {
 /* Navbar */
 .navbar {
     display: flex;
+    margin-bottom: 100px; /* Adjust this value as needed */
+
     justify-content: space-between;
     align-items: center;
     padding: 18px 8%;
@@ -67,7 +69,8 @@ html {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 20px;
+    padding-top: 60px; /* Adjust to create space */
+
     background: linear-gradient(145deg, #eaf3ff, #f5f9ff);
 }
 

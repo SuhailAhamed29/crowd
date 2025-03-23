@@ -276,3 +276,21 @@ h2 {
   .home-link:hover {
     color: #145aba;
   }
+
+
+  /* Add this to your existing CSS */
+.delete-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #bb2d3b !important;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/user.css">
+    <title>Raise Fund for Yourself</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="home-link">← Home</a>
+    </nav>
+
+    <div class="form-container">
+        <h2>Raise Fund for Yourself</h2>
+        <p>Complete the form below to create your personal fundraiser</p>
+        
+        <form id="userFundForm">
+            <div class="form-group">
+                <label for="fullName">Your Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="purpose">Purpose of Fundraising</label>
+                <select id="purpose" name="purpose" required>
+                    <option value="" disabled selected>Select purpose</option>
+                    <option value="Education">Education</option>
+                    <option value="Marriage">Marriage</option>
+                    <option value="Health">Health</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="otherPurposeGroup" style="display: none;">
+                <label for="otherPurpose">Specify Other Purpose</label>
+                <input type="text" id="otherPurpose" name="otherPurpose" placeholder="Please specify your purpose">
+            </div>
+
+            <div class="form-group">
+                <label for="targetAmount">Target Amount (₹)</label>
+                <input type="number" id="targetAmount" name="targetAmount" placeholder="Enter target amount" required min="1000">
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Your Story</label>
+                <textarea id="description" name="description" placeholder="Tell us why you need support..." required rows="5"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="imageLink">Image Link (Optional)</label>
+                <input type="url" id="imageLink" name="imageLink" placeholder="Provide a link to your image">
+                <p class="help-text">You can upload your image to a free image hosting site and paste the link here</p>
+            </div>
+            
+            <button type="submit" class="submit-button">Submit Fundraiser</button>
+        </form>
+    </div>
+
+    <script src="js/user.js"></script>
+</body>
+</html>

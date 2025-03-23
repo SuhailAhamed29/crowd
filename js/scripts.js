@@ -24,14 +24,14 @@ const cardsData = {
         ]
     },
 
-    song3: {  // ✅ NEW PROJECT 3 ADDED
-        imgSrc: "assets/ppl.jpg", // Add real image if available
+    song3: {
+        imgSrc: "assets/ppl.jpg",
         title: "Care for Abandoned Elderly",
         description: [
             "Every day, elderly people are abandoned and left on streets without food, shelter, or care — a reality that needs urgent attention.",
             "As part of our college social responsibility project, we collaborate with NGOs to provide support and dignity to over 230 homeless elderly individuals.",
             "Our aim is to spread awareness and encourage financial contributions to ensure they receive food, shelter, medical aid, and compassion.",
-            "Let’s work together to bring hope and care to those forgotten by society."
+            "Let's work together to bring hope and care to those forgotten by society."
         ]
     }
 };
@@ -39,7 +39,17 @@ const cardsData = {
 
 // Function to show popup when card is clicked
 function showPopup(cardId) {
-    const card = cardsData[cardId];
+    let card;
+    
+    // Check if it's a user-created fundraiser
+    if (cardId.startsWith('user')) {
+        const userFundraisers = JSON.parse(localStorage.getItem("userFundraisers")) || [];
+        const index = parseInt(cardId.replace('user', ''));
+        card = userFundraisers[index];
+    } else {
+        card = cardsData[cardId];
+    }
+    
     if (card) {
         // Set image and title in popup
         document.getElementById('popup-image').src = card.imgSrc;
@@ -57,6 +67,17 @@ function showPopup(cardId) {
         });
         popupDescription.appendChild(ul); // Append list to popup
 
+        // Add contact info for user-created fundraisers
+        if (card.isUserCreated) {
+            const contactInfo = document.createElement('div');
+            contactInfo.innerHTML = `
+                <h4 style="margin-top: 15px; text-align: left;">Contact Information:</h4>
+                <p style="text-align: left; margin-bottom: 5px;">Email: ${card.contactEmail}</p>
+                <p style="text-align: left;">Phone: ${card.contactPhone}</p>
+            `;
+            popupDescription.appendChild(contactInfo);
+        }
+
         // Add "Donate" button for participation
         const donateButton = document.createElement('button');
         donateButton.textContent = "Donate / Support Us";
@@ -64,18 +85,14 @@ function showPopup(cardId) {
         popupDescription.appendChild(donateButton); // Append button to popup
 
         // Handle "Donate" button click to move to payment/participation page
-      // Handle "Donate" button click to move to payment/participation page
-
-donateButton.addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevent popup from closing
-    localStorage.setItem('selectedProject', JSON.stringify({
-        title: card.title,
-        description: card.description.join("\n") // Store full description
-    }));
-    window.location.href = "payment.html"; // Redirect to payment page
-});
-
-
+        donateButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent popup from closing
+            localStorage.setItem('selectedProject', JSON.stringify({
+                title: card.title,
+                description: card.description.join("\n") // Store full description
+            }));
+            window.location.href = "payment.html"; // Redirect to payment page
+        });
 
         // Show popup with fade-in animation
         const popupOverlay = document.getElementById('popup');
@@ -102,3 +119,28 @@ function closePopup() {
         }
     }, { once: true });
 }
+
+// Function to load all projects including user-created ones
+document.addEventListener('DOMContentLoaded', function() {
+    const cardContainer = document.querySelector('.card-container');
+    if (!cardContainer) return; // Only run on pages with the card container
+    
+    // Add user-created fundraisers if they exist
+    const userFundraisers = JSON.parse(localStorage.getItem("userFundraisers")) || [];
+    
+    if (userFundraisers.length > 0) {
+        userFundraisers.forEach((fundraiser, index) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.setAttribute('onclick', `showPopup('user${index}')`);
+            
+            card.innerHTML = `
+                <img src="${fundraiser.imgSrc}" alt="${fundraiser.title}">
+                <h3>${fundraiser.title}</h3>
+                <p>${fundraiser.description[0].substring(0, 50)}...</p>
+            `;
+            
+            cardContainer.appendChild(card);
+        });
+    }
+});

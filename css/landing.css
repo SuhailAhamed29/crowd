@@ -1,0 +1,91 @@
+/* Apply a full-screen gradient background */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+}
+
+/* Centered container */
+.landing-container {
+    background: rgba(255, 255, 255, 0.15); /* Transparent white */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px); /* Glass effect */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 350px;
+    width: 100%;
+}
+
+/* Heading styles */
+h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+/* Paragraph */
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Input fields */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+}
+
+/* Input focus effect */
+input:focus {
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Button styles */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff6b6b;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #ff4f4f;
+}
+
+/* Smooth animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply animation */
+.landing-container {
+    animation: fadeIn 0.6s ease-in-out;
+}

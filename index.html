@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        document.getElementById("loginButton").addEventListener("click", function() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+    
+            // Simple validation (replace this with real authentication logic)
+            if (email === "suhailahamedd27@gmail.com" && password === "yourpassword") {
+                localStorage.setItem("isLoggedIn", "true");  // Store login state
+                window.location.href = "index.html";  // Redirect to home page
+            } else {
+                alert("Invalid email or password!");  // Show error message
+            }
+        });
+    </script>
+    
     <link rel="stylesheet" href="css/style.css">
     <title>Crowd Fundraiser</title>
 </head>
